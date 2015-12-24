@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="index.html">Record</a></li>
+                <li role="presentation" class="active"><a href="#">View</a></li>
+            </ul>
+            <h3>Movies Watched</h3>
+            <br/>
+            <div class="container">
+                <div id="MovieList">
+                </div>
+            </div>
+            <div class="container">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h3>JSON</h3>
+                    </div>
+                    <div class="panel-footer" id="result">
+                        [  
+                            {  
+                                "MovieName":"Hulk",
+                                "DateCreated":"2015-09-09",
+                                "Rating":"1"
+                            },
+                            {  
+                                "MovieName":"Star Wars",
+                                "DateCreated":"2015-09-12",
+                                "Rating":"5"
+                            },
+                            {  
+                                "MovieName":"Spider-man",
+                                "DateCreated":"2015-10-10",
+                                "Rating":"3"
+                            }
+                        ]
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="http://code.jquery.com/jquery-2.1.4.js" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script>
+            $( document ).ready(function() {
+                var movies = JSON.parse(document.getElementById("result").innerText);
+                console.log(movies);
+                var movieList = document.getElementById("MovieList");
+                var moviesHtml = "";            
+                     
+                for(var i = 0; i < movies.length; i++)
+                {
+                    moviesHtml += '<div class="container"><p>' + movies[i].MovieName + ' ' + movies[i].Rating + ' ' + movies[i].DateCreated + '</p></div>';
+                    console.log(moviesHtml);
+                }
+                
+                movieList.innerHTML = moviesHtml;
+            });
+        </script>
+    </body>
+</html>
